@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Website Rotator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="less/style.less" rel="stylesheet/less" type="text/css"  />
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/less.js/2.1.1/less.min.js"></script>
+</head>
+<body ng-controller="ExampleController" ng-mouseleave="openMenu($event)" >
+    <div ng-mousemove="checkMenu(event)">
+        <div ng-click="checkMenu($event)">
+            <div class="menu" ng-mouseleave="closeMenu()">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-xs-12 col-sm-1">
+                            <label>Refresh Rate:</label>
+                        </div>
+                        <div class="col-xs-12 col-sm-2">
+                            <div class="form-group">
+                                <input type="number" class="form-control" placeholder="sekunden" ng-model="refreshRate" ng-change="changeRefreshRate()">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form>
+                                <div class="form-group form-group-lg" ng-repeat="url in urls">
+                                    <div class="row">
+                                        <div class="col-xs-11">
+                                            <input type="url" class="form-control" placeholder="url" value="{{ url }}">
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <button class="btn btn-default btn-lg" ng-click="removeElement(url)">-</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-lg">
+                                    <div class="row">
+                                        <div class="col-xs-11">
+                                            <input type="url" class="form-control" placeholder="url" ng-model="urlnew">
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <button class="btn btn-default btn-lg" ng-click="addElement()">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="website-container-wrap">
+            <div my-iframe></div>
+        </div>
+    </div>
+
+
+    <script>
+        var require = {
+            baseUrl: 'js',
+            paths: {
+                "jquery" : "https://code.jquery.com/jquery-2.1.1.min",
+                "angular" : "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min",
+                "angularAMD" : "https://cdn.jsdelivr.net/angular.amd/0.2/angularAMD.min"
+            },
+            shim: {
+                "angularAMD": ["angular"]
+            },
+            deps: ['app']
+        }
+    </script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.15/require.min.js"></script>
+    <!--
+    basic boilerplate for simple stand alone pages
+    with everything inline in case you don't want or need assets
+    @see https://github.com/lautr/HTML-Boilerplate
+    -->
+</body>
+</html>
