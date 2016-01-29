@@ -45,13 +45,13 @@ define(['angularAMD', 'jquery'], function (angularAMD) {
     }
 
     $scope.closeMenu = function () {
-      angular.element('.menu').addClass('hidden');
+      angular.element(document).find('.menu').addClass('hidden');
     };
 
 
     $scope.openMenu = function (event) {
       if (event.clientY < 5) {
-        angular.element('.menu').removeClass('hidden');
+        angular.element(document).find('.menu').removeClass('hidden');
       }
     };
 
